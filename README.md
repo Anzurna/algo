@@ -1,10 +1,10 @@
 # algo
 
-A* algorithm
+A* algorithm 
 
-LMB to set starting point
-RMB to place obstacle
-MMB to set goal
+LMB to set starting point <br>
+RMB to place obstacle <br>
+MMB to set goal <br>
 
 Backspace to clear screen
 
