@@ -12,10 +12,7 @@ class AlgoVisualizer:
 		self.rectangles = []
 		self.block_size = 5
 		self.border_size = 1
-		self.general_info = {"start_coords": (0, 0), 
-							"goal_coords"  : (0, 0), 
-							"is_start_set" :  False, 
-							"is_goal_set"  :  False}
+		self.general_info = self.new_gen_info()
 
 		self.COLOR_BLUE = (0, 0, 255)
 		self.COLOR_RED = (255, 0, 0)
@@ -46,6 +43,15 @@ class AlgoVisualizer:
 			for item in row:
 				rect, color = item[0], item[1]
 				pygame.draw.rect(self.DISPLAYSURF, color, rect)
+	def renew_grid(self):
+		for row in self.rectangles:
+			for item in row:
+				item[1] = self.COLOR_GREEN
+	def new_gen_info(self):
+		return {"start_coords": (0, 0), 
+				"goal_coords"  : (0, 0), 
+				"is_start_set" :  False, 
+				"is_goal_set"  :  False}
 
 	def unify_values(self, value) -> tuple:
 		if value == self.COLOR_BLUE:
@@ -121,7 +127,8 @@ class AlgoVisualizer:
 			if event.key == K_SPACE:
 				self.visualize_path(self.calculate_path())
 			if event.key == K_BACKSPACE:
-				pass
+				self.renew_grid()
+				self.general_info = self.new_gen_info()
 
 	def main_loop(self) -> None:
 		pygame.display.init()
